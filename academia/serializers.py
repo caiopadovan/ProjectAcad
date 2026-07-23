@@ -15,11 +15,11 @@ class ExerciseSerializer(serializers.ModelSerializer):
 
 
 class TrainingExerciseSerializer(serializers.ModelSerializer):
-    exercise = ExerciseSerializer(read_only=True)
+    exercise_detail = ExerciseSerializer(source='exercise', read_only=True)
 
     class Meta:
         model = TrainingExercise
-        fields = ['id', 'exercise', 'series', 'reps', 'order']
+        fields = ['id', 'training', 'exercise', 'exercise_detail', 'series', 'reps', 'order']
 
 
 class TrainingSerializer(serializers.ModelSerializer):

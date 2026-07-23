@@ -5,7 +5,7 @@ from django.db import models
 class MuscularGroup(models.Model):                      
     name = models.CharField(max_length=50)                    # Fields that the model needs
 
-    def __str__(self):
+    def __str__(self):                                        # How the user will see it
         return self.name
 
 class Exercise(models.Model):
