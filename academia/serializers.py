@@ -7,12 +7,10 @@ class MuscularGroupSerializer(serializers.ModelSerializer):       # Serializer =
         model = MuscularGroup                                     # Which model this serializer represents
         fields = '__all__'                                        # Which fields will be used
 
-
 class ExerciseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Exercise
         fields = '__all__'
-
 
 class TrainingExerciseSerializer(serializers.ModelSerializer):
     exercise_detail = ExerciseSerializer(source='exercise', read_only=True)
@@ -21,7 +19,6 @@ class TrainingExerciseSerializer(serializers.ModelSerializer):
         model = TrainingExercise
         fields = ['id', 'training', 'exercise', 'exercise_detail', 'series', 'reps', 'order']
 
-
 class TrainingSerializer(serializers.ModelSerializer):
     exercises_detail = TrainingExerciseSerializer(many=True, read_only=True)
 
@@ -29,12 +26,10 @@ class TrainingSerializer(serializers.ModelSerializer):
         model = Training
         fields = ['id', 'name', 'created', 'exercises_detail']
 
-
 class ExerciseExecutionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ExerciseExecution
         fields = '__all__'
-
 
 class TrainingExecutionSerializer(serializers.ModelSerializer):
     exercise_execution = ExerciseExecutionSerializer(many=True, read_only=True)
