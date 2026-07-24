@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .models import MuscularGroup, Exercise, Training, TrainingExercise, TrainingExecution, ExerciseExecution
 from .serializers import MuscularGroupSerializer, ExerciseSerializer, TrainingSerializer, TrainingExerciseSerializer, TrainingExecutionSerializer, ExerciseExecutionSerializer
+from .pagination import CustomPagination
 
 # Create your views here.
 
@@ -12,6 +13,7 @@ class MuscularGroupViewSet(viewsets.ModelViewSet):                   # ModelView
 class ExerciseViewSet(viewsets.ModelViewSet):
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
+    pagination_class = CustomPagination
 
 class TrainingViewSet(viewsets.ModelViewSet):
     queryset = Training.objects.all()
@@ -24,7 +26,9 @@ class TrainingExerciseViewSet(viewsets.ModelViewSet):
 class TrainingExecutionViewSet(viewsets.ModelViewSet):
     queryset = TrainingExecution.objects.all()
     serializer_class = TrainingExecutionSerializer
+    pagination_class = CustomPagination
 
 class ExerciseExecutionViewSet(viewsets.ModelViewSet):
     queryset = ExerciseExecution.objects.all()
     serializer_class = ExerciseExecutionSerializer
+    pagination_class = CustomPagination
